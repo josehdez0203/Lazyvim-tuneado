@@ -16,3 +16,14 @@ map("n", "<F7>", ":NvimTreeFindFile<CR>", { noremap = true, silent = false })
 --Terminal flotante
 map("n", "<F12>", ":FloatermToggle<CR>", { noremap = true, silent = true })
 map("t", "<F12>", "<C-\\><C-n>:FloatermToggle<CR>", { noremap = true, silent = true })
+-- delete single character without copying into register
+map("n", "x", '"_x', { noremap = true, silent = true })
+map("n", "<C-c>", ":<C-w>q<cr>", { noremap = true, silent = true }) -- close current split window
+map("n", "<C-x>", ":bdelete<CR>", { noremap = true, silent = false }) -- cerrar buffer
+map("n", "<leader>zz", ":ZenMode<CR>", { noremap = true, silent = true }) -- ZenMode
+map("n", "<leader>zt", ":Twilight<CR>", { noremap = true, silent = true }) --Twilight
+-- Reemplazar todo en el archivo
+map("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { noremap = true, silent = false })
+--" Commentary
+-- map("n", "<leader>/", "gcc", { noremap = true, silent = true })
+-- map("v", "<c-/>", "gc", { noremap = true, silent = true })

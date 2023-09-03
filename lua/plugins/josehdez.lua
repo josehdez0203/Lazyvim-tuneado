@@ -85,18 +85,23 @@ return {
   },
   {
     "numToStr/Comment.nvim",
-    event = "InsertEnter",
+    event = "BufEnter",
     dependencies = {
       "JoosepAlviste/nvim-ts-context-commentstring",
     },
     opts = {
       toggler = {
         line = "<c-.>",
+        block = "<c-.>",
       },
       opleader = {
-        line = "<c-/>",
+        line = "<c-.>",
       },
       pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+    },
+    keys = {
+      { "<c-.>", "gcc", desc = "Comment", remap = true },
+      { "<c-/>", "gc", desc = "Bloque comment", remap = true },
     },
   },
   {
@@ -157,5 +162,9 @@ return {
   {
     "voldikss/vim-floaterm",
     lazy = false,
+  },
+  {
+    "folke/zen-mode.nvim",
+    dependencies = { "folke/twilight.nvim" },
   },
 }
