@@ -167,4 +167,46 @@ return {
     "folke/zen-mode.nvim",
     dependencies = { "folke/twilight.nvim" },
   },
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        "stylua",
+        "shellcheck",
+        "shfmt",
+        "flake8",
+        "prettier",
+        "css-lsp",
+        "emmet-language-server",
+      },
+    },
+  },
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = { "mason.nvim" },
+    opts = function()
+      local nls = require("null-ls")
+      return {
+        root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
+        sources = {
+          nls.builtins.formatting.fish_indent,
+          nls.builtins.diagnostics.fish,
+          nls.builtins.formatting.stylua,
+          nls.builtins.formatting.shfmt,
+          nls.builtins.formatting.prettier,
+          -- nls.builtins.diagnostics.flake8,
+        },
+      }
+    end,
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    keys = {
+      -- disable the keymap to grep files
+      -- { "<leader>/", false },
+      -- { "<leader>/", "<cmd>Telescope find_files<cr>", desc = "Buscar Archivos" },
+      { "<C-p>", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+    },
+  },
 }

@@ -6,8 +6,8 @@ local map = vim.api.nvim_set_keymap --for conciseness
 -- local opts = { noremap = true, silent = true }
 
 --Abrir navegador y buscar en archivo en arbol
-map("n", "<F3>", ":NvimTreeToggle<CR>", { noremap = true, silent = false })
-map("n", "<F7>", ":NvimTreeFindFile<CR>", { noremap = true, silent = false })
+map("n", "<F3>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+map("n", "<F7>", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
 
 --"guardar archivo
 -- map("n", "<C-s>", "<cmd>w<CR>", { noremap = true, silent = false })
@@ -19,11 +19,15 @@ map("t", "<F12>", "<C-\\><C-n>:FloatermToggle<CR>", { noremap = true, silent = t
 -- delete single character without copying into register
 map("n", "x", '"_x', { noremap = true, silent = true })
 map("n", "<C-c>", ":<C-w>q<cr>", { noremap = true, silent = true }) -- close current split window
-map("n", "<C-x>", ":bdelete<CR>", { noremap = true, silent = false }) -- cerrar buffer
+map("n", "<C-x>", ":bdelete<CR>", { noremap = true, silent = true }) -- cerrar buffer
 map("n", "<leader>zz", ":ZenMode<CR>", { noremap = true, silent = true }) -- ZenMode
 map("n", "<leader>zt", ":Twilight<CR>", { noremap = true, silent = true }) --Twilight
 -- Reemplazar todo en el archivo
 map("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { noremap = true, silent = false })
---" Commentary
--- map("n", "<leader>/", "gcc", { noremap = true, silent = true })
--- map("v", "<c-/>", "gc", { noremap = true, silent = true })
+-- Move Lines
+map("n", "<C-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+map("n", "<C-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+map("i", "<C-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+map("i", "<C-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+map("v", "<C-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+map("v", "<C-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
