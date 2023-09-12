@@ -92,17 +92,17 @@ return {
     opts = {
       toggler = {
         line = "<c-.>",
-        block = "<c-.>",
+        -- block = "<c-.>",
       },
-      opleader = {
-        line = "<c-.>",
-      },
+      -- opleader = {
+      --   line = "<c-.>",
+      -- },
       pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
     },
-    keys = {
-      { "<c-.>", "gcc", desc = "Comment", remap = true },
-      { "<c-/>", "gc", desc = "Bloque comment", remap = true },
-    },
+    -- keys = {
+    --   { "<c-.>", "gcc", desc = "Comment" },
+    --   { "<c-.>", "gc", desc = "Bloque comment" },
+    -- },
   },
   {
     "lewis6991/gitsigns.nvim",
@@ -204,9 +204,14 @@ return {
     "nvim-telescope/telescope.nvim",
     keys = {
       -- disable the keymap to grep files
-      -- { "<leader>/", false },
+      { "<leader>/", false },
+      { "<leader>ff", false },
+      { "<leader>fb", false },
       -- { "<leader>/", "<cmd>Telescope find_files<cr>", desc = "Buscar Archivos" },
-      { "<C-p>", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+      { "<C-p>", "<cmd>Telescope find_files<cr>", desc = "Archivos" },
+      { "<C-b>", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+      { "<C-g>", "<cmd>Telescope live_grep<cr>", desc = "Buscar en todos lados" },
     },
   },
+  { "mbbill/undotree" },
 }

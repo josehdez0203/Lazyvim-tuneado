@@ -8,3 +8,7 @@ opt.whichwrap = "b,s,<,>[,],h,l"
 opt.foldmethod = "indent"
 opt.colorcolumn = "80"
 opt.foldlevel = 100
+opt.undofile = true
+opt.showmode = false
+---@diagnostic disable-next-line: assign-type-mismatch
+opt.undodir = vim.fn.expand("~/.undodir/")
