@@ -23,9 +23,9 @@ map("n", "<C-x>", ":bdelete<CR>", opts) -- cerrar buffer
 map("n", "<leader>zz", ":ZenMode<CR>", opts) -- ZenMode
 map("n", "<leader>zt", ":Twilight<CR>", opts) --Twilight
 -- Reemplazar todo en el archivo
-map("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
+map("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { noremap = true, silent = false })
 -- Buscar palabra en todo el archivo
-map("n", "<leader>h", [[:/\<<C-r><C-w>\><Left><Left><CR>:set hlsearch<CR>n]], opts)
+map("n", "<c-b>", [[:/\<<C-r><C-w>\><Left><Left><CR>:set hlsearch<CR>n]], opts)
 -- Move Lines
 map("n", "<C-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
 map("n", "<C-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
@@ -35,9 +35,12 @@ map("v", "<C-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "<C-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 -- Mover entre buffers
 map("n", "<tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Move right" })
-map("n", "<s-tab>", "<cmd>BufferLineCylcePrev<CR>", { desc = "Move left" })
+map("n", "<s-tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Move left" })
 --Mostrar/ocultar barra de cambios
 map("n", "<F4>", ":UndotreeToggle<CR>", { noremap = true, silent = false })
+-- map("n", "<C-/>", nil)
+-- map("n", "<F4>", ":UndotreeToggle<CR>", { noremap = true, silent = false })
+-- map("n", "<F4>", ":UndotreeToggle<CR>", { noremap = true, silent = false })
 -- map(
 --   "v",
 --   "n",

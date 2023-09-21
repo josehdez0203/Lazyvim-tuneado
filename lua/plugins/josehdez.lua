@@ -9,8 +9,6 @@ return {
       colorscheme = "nightfox",
     },
   },
-  -- disable trouble
-  { "folke/trouble.nvim", enabled = false },
   {
     "hrsh7th/nvim-cmp",
     version = false, -- last release is way too old
@@ -119,19 +117,6 @@ return {
     },
   },
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    enabled = false,
-    -- opts = {
-    --   event_handlers = {
-    --     event = "file_opened",
-    --     handler = function(file)
-    --       print("-auto close", file)
-    --       require("neo-tree").close_all()
-    --     end,
-    --   },
-    -- },
-  },
-  {
     "nvim-tree/nvim-tree.lua",
     lazy = false,
     dependencies = {
@@ -154,10 +139,6 @@ return {
     --   { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Explorer", remap = true },
     --   { "<leader>E", "<cmd>NvimTreeFindFile<cr>", desc = "Busca Archivo", remap = true },
     -- },
-  },
-  {
-    "goolord/alpha-nvim",
-    enabled = false,
   },
   {
     "voldikss/vim-floaterm",
@@ -208,10 +189,51 @@ return {
       { "<leader>ff", false },
       { "<leader>fb", false },
       -- { "<leader>/", "<cmd>Telescope find_files<cr>", desc = "Buscar Archivos" },
-      { "<C-p>", "<cmd>Telescope find_files<cr>", desc = "Archivos" },
-      { "<C-b>", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+      { "<C-/>", "<cmd>Telescope find_files<cr>", desc = "Archivos" },
+      { "<C-p>", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+      { "<C-b>", "<cmd>Telescope oldfiles<cr>", desc = "Historial de archivos" },
       { "<C-g>", "<cmd>Telescope live_grep<cr>", desc = "Buscar en todos lados" },
     },
   },
   { "mbbill/undotree" },
+  {
+    "uga-rosa/ccc.nvim",
+    lazy = false,
+    opts = {
+      highlighter = {
+        auto_enable = true,
+        lsp = true,
+      },
+    },
+    keys = {
+      { "co", "<cmd>CccPick<cr>", desc = "Escoger color" },
+      { "cc", "<cmd>CccHighlighterToggle<cr>", desc = "Alternar color" },
+      { "cv", "<cmd>CccConvert<cr>", desc = "Editar color" },
+    },
+  },
+  { "windwp/nvim-autopairs", event = "InsertEnter", opts = {} },
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup()
+    end,
+  },
+  {
+    "terryma/vim-multiple-cursors",
+    event = "BufEnter",
+    config = function()
+      vim.g.multi_cursor_use_default_mapping = 0
+      -- Default mapping
+      vim.g.multi_cursor_start_word_key = "<C-n>"
+      vim.g.multi_cursor_select_all_word_key = "<A-n>"
+      vim.g.multi_cursor_start_key = "g<C-n>"
+      vim.g.multi_cursor_select_all_key = "g<A-n>"
+      vim.g.multi_cursor_next_key = "<C-n>"
+      vim.g.multi_cursor_prev_key = "<C-p>"
+      vim.g.multi_cursor_skip_key = "<C-x>"
+      vim.g.multi_cursor_quit_key = "<Esc>"
+    end,
+  },
 }
